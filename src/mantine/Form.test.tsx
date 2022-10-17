@@ -5,9 +5,7 @@ import { Form, FormValue } from "./Form";
 
 test("type", async () => {
   const handleSubmit = vi.fn((values: FormValue) => {});
-  const { getByLabelText, getByRole } = render(
-    <Form onSubmit={handleSubmit} />
-  );
+  const { getByRole } = render(<Form onSubmit={handleSubmit} />);
   const user = userEvent.setup();
   await user.type(getByRole("textbox", { name: "Email" }), "a@example.com");
   await user.click(getByRole("button"));
